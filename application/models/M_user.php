@@ -59,6 +59,17 @@ class M_user extends CI_Model {
         public function cek_username($username){
             return $this->db->query("SELECT COUNT(username) AS uname FROM tb_users WHERE username = '".$username."'") -> row();
         }
-		
+		public function blackuser(){
+            return $this->db->query("SELECT nama,username,akses_level,status FROM tb_users WHERE status = '2'")->result();
+	}
+	public function panitiagudang(){
+            return $this->db->query("SELECT nama,username,akses_level,status FROM tb_users WHERE akses_level = '2'")->result();
+	}
+	public function panitiapurchasing(){
+            return $this->db->query("SELECT nama,username,akses_level,status FROM tb_users WHERE akses_level = '3'")->result();
+	}
+	public function vendor(){
+            return $this->db->query("SELECT nama,username,akses_level,status FROM tb_users WHERE akses_level = '6'")->result();
+	}
 	
 }
